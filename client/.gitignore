@@ -1,24 +1,90 @@
+# Ignore all node_modules folders
+node_modules/
+# Ignore environment files
+.env
+client/.env
+server/.env
+
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+bower_components/
+vendor/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Build output
+dist/
+build/
+.client/build/
+server/build/
+out/
+public/ # Only if it contains generated files
+
+# Temporary files
+tmp/
+*.tmp
+*.swp
+*.bak
+*.orig
+
+# System files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# IDE-specific files
+.idea/
+.vscode/
+.history/
+
+# Security files
+*.pem
+*.crt
+*.key
+id_rsa
+
+# Generated files
+*.min.js
+*.min.css
+*.map
+
+# Personal config
+*.local
+*.env.*
+*.cache
+
+# Other specific exclusions
+client/.next/
+server/.next/
+client/.vercel/
+server/.vercel/
+*.zip
+*.tar.gz
+
+# Ignore large media files (add them to Git LFS if needed)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.gif
+*.psd
+*.ai
+
+# Ignore database dumps
+*.sql
+*.sqlite
+
+# Ignore testing files
+coverage/
+.nyc_output/
+
+# Ignore package manager lockfiles if not in use
+package-lock.json
+yarn.lock
+
+# Ignore React build artifacts
+client/.cache/
+server/.cache/

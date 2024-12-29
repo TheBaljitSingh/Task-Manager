@@ -10,6 +10,8 @@ const Signup = ({setIsAuthenticated}) => {
     password: '',
   });
 
+  
+
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
