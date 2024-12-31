@@ -48,7 +48,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
           type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="test@12345678"
+          placeholder="12345678"
           className="w-full mb-3 p-2 border rounded"
           required
           />
