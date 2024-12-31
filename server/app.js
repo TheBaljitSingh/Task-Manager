@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 // Enable CORS
 const corsOrigin ={
-    origin:'http://localhost:5173', //or whatever port your frontend is using
+    origin:`${process.env.FRONTEND_URL}`, //or whatever port your frontend is using
     credentials:true,            
     optionSuccessStatus:200
 }
