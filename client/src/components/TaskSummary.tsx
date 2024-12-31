@@ -8,28 +8,30 @@ const TaskSummary = () => {
     pendingTasks: 0,
   });
 
+
+  const fetchTaskStats = async () => {
+    try {
+      const res = await axios.get('http://localhost:3000/api/v1/tasks', { withCredentials: true });
+      if (res.data && res.data.tasks) {
+        const tasks = res.data.tasks;
+        const totalTasks = tasks.length;
+        const completedTasks = tasks.filter(task => task.status === 'completed').length;
+        const pendingTasks = tasks.filter(task => task.status === 'pending').length;
+
+        // Update the task stats state
+        setTaskStats({
+          totalTasks,
+          completedTasks,
+          pendingTasks,
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching task stats:', error);
+    }
+  };
   // Fetch task data from the backend
   useEffect(() => {
-    const fetchTaskStats = async () => {
-      try {
-        const res = await axios.get('http://localhost:3000/api/v1/tasks', { withCredentials: true });
-        if (res.data && res.data.tasks) {
-          const tasks = res.data.tasks;
-          const totalTasks = tasks.length;
-          const completedTasks = tasks.filter(task => task.status === 'completed').length;
-          const pendingTasks = tasks.filter(task => task.status === 'pending').length;
-
-          // Update the task stats state
-          setTaskStats({
-            totalTasks,
-            completedTasks,
-            pendingTasks,
-          });
-        }
-      } catch (error) {
-        console.error('Error fetching task stats:', error);
-      }
-    };
+    
 
     fetchTaskStats();
   }, []);

@@ -1,6 +1,29 @@
-const Modal = ({ isOpen, newTask, setNewTask, onClose, onAddTask }) => {
+import React, {useState} from "react";
+import axios from 'axios';
+const Modal = ({ isOpen, onClose }) => {
     if (!isOpen) return null; // If modal is not open, don't render anything
 
+
+    const [newTask, setNewTask] = useState({ title: '', priority: '', status: '', startTime: '', endTime: '' });
+
+    const [error, setError] = useState(null);
+
+    const handleAddTask = async (newTask) => {
+
+
+      try {
+        const res = await axios.post(`${import.meta.env.VITE_BACKEND}/api/v1/tasks`, newTask, { withCredentials: true });
+        if (res.status === 201) {
+          // setTask((prevTasks) => [...prevTasks, res.data.task]);
+          // setFilteredTasks((prevTasks) => [...prevTasks, res.data.task]);
+          onClose();          
+        }
+      } catch (error) {
+      const errorMessage = error.response?.data?.error || "An error occurred while adding the task.";
+      setError(errorMessage);
+      console.error("Error adding task:", error);
+      }
+    };
 
   
     return (
@@ -71,11 +94,14 @@ const Modal = ({ isOpen, newTask, setNewTask, onClose, onAddTask }) => {
               Cancel
             </button>
             <button
-              onClick={onAddTask}
+              onClick={()=>handleAddTask(newTask)}
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
             >
               Add Task
             </button>
+          </div>
+          <div className="flex justify-center space-x-4 text-red-500">
+              <p>{error}</p>
           </div>
         </div>
       </div>

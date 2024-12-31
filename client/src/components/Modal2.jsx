@@ -1,9 +1,53 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Modal2 = ({ isOpen, newTask, setNewTask, updateTask, onClose }) => {
+const Modal2 = ({ isOpen, onClose, newTask, setNewTask }) => {
   if (!isOpen) return null; // If modal is not open, don't render anything
+    const [error, setError] = useState(null);
 
-  // No need to reset the form here, as newTask is already managed by the parent component
+    const [success, setSuccess] = useState(null);
+
+  // const [newTask, setNewTask] = useState();
+
+
+
+  const updateTask = async (task) => {
+
+    console.log("called updateTask")
+    try {
+      // Prepare the data to update (only send the necessary fields)
+     
+      // Make the API call to update the task
+      const res = await axios.put(
+        `${import.meta.env.VITE_BACKEND}/api/v1/tasks/${task._id}`,  // Use the task ID
+        task,  // Send only the necessary data
+        { withCredentials: true }
+      );
+
+      
+      if (res.status === 200) {
+
+
+        setSuccess("Task updated successfully")
+        
+        setTimeout(onClose, 2000);
+
+        
+        // setIsModalOpen2(false);  // Close the modal after a successful update
+      }
+    } catch (error) {
+      
+      const errorMessage = error.response?.data?.error || "An error occurred while updating the task.";
+      setError(errorMessage);
+
+      console.error("Error adding task:", error);
+
+        // setError(error);
+        
+      // You can show an alert here to notify the user about the error
+    }
+  };
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -12,13 +56,19 @@ const Modal2 = ({ isOpen, newTask, setNewTask, updateTask, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateTask(newTask); // Call update task function with the updated task data
+    console.log("Submitting task update:", newTask); // Log task data
+    updateTask(newTask);
   };
+  
+
+
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded-md shadow-md w-96">
+        <p className='text-xl text-green-500'>{success}</p>
         <h2 className="text-xl font-semibold mb-4">Update Task</h2>
+
 
         {/* Form Fields */}
         <form onSubmit={handleSubmit}>
@@ -95,6 +145,9 @@ const Modal2 = ({ isOpen, newTask, setNewTask, updateTask, onClose }) => {
             >
               Update Task
             </button>
+          </div>
+          <div className="flex justify-center space-x-4 text-red-500">
+              <p>{error}</p>
           </div>
         </form>
       </div>

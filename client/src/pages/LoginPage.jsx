@@ -40,15 +40,15 @@ const LoginPage = ({ setIsAuthenticated }) => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="test@gmail.com"
           className="w-full mb-3 p-2 border rounded"
           required
           />
         <input
-          type="password"
+          type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="test@12345678"
           className="w-full mb-3 p-2 border rounded"
           required
           />
