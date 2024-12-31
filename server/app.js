@@ -16,14 +16,13 @@ app.use(cookieParser());
 
 
 // Enable CORS
+const corsOrigin ={
+    origin:'http://localhost:5173', //or whatever port your frontend is using
+    credentials:true,            
+    optionSuccessStatus:200
+}
+app.use(cors(corsOrigin));
 
-const corsOptions = {
-    origin: `${process.env.FRONTEND_URL}`, // Replace with your client's origin
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-};
-  
-
-app.use(cors(corsOptions));
 
   
 
