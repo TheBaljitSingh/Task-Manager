@@ -28,6 +28,9 @@ const corsOrigin ={
 app.use(cors(corsOrigin));
 
 
+console.log(`front end url is : ${process.env.FRONTEND_URL}`)
+
+
   
 
 app.use(express.json());
