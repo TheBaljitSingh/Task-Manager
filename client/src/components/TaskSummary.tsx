@@ -11,7 +11,7 @@ const TaskSummary = () => {
 
   const fetchTaskStats = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/v1/tasks', { withCredentials: true });
+      const res = await axios.get(`${process.env.VITE_BACKEND}`, { withCredentials: true });
       if (res.data && res.data.tasks) {
         const tasks = res.data.tasks;
         const totalTasks = tasks.length;
