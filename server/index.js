@@ -14,7 +14,6 @@ connectDatabase();
 
 process.env.PORT;
 
-// connectDatabase();
 
 
 

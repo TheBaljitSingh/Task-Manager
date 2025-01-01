@@ -11,11 +11,14 @@ const jwt = require("jsonwebtoken");
 
     //options for cookie
     const option = {
-        expires:new Date(
-        Date.now()+process.env.COOKIE_EXPIRE*24*60*60*1000
+        expires: new Date(
+            Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
         ),
-        httpOnly:true,
+        httpOnly: true,
+        sameSite: 'None', // Required for cross-site cookies
+        secure: process.env.NODE_ENV === 'production', // Secure for HTTPS
     };
+    
     res.status(statusCode).cookie("token",token,option).json({
         success:true,
         user,
