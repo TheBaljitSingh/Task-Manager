@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import NotFound from './pages/NotFound.jsx';
 import PrivateRoute from './components/PrivateRoute';
 import Signup from './pages/SignupPage.jsx';
+import OtpLogin from './pages/OtpLogin.jsx';
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
 
         {/* Public Routes */}
         <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated}  />} />
+        <Route path='/otplogin' element={<OtpLogin setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/signup" element={<Signup setIsAuthenticated={setIsAuthenticated}  />} />
 
         {/* Private Routes */}
@@ -39,7 +41,6 @@ const App = () => {
             </PrivateRoute>
           }
         />
-
         {/* Handle Not Found Routes */}
         <Route path="*" element={<NotFound />} />
       </Routes>

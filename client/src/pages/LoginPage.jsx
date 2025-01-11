@@ -16,7 +16,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
         { email, password },
         { withCredentials: true } // `withCredentials` sends cookies
       );
-      
+
       if (response.status === 200) {
         const { token } = response.data; // Assuming the token is returned in the response
         localStorage.setItem('authToken', token); // Store the token in localStorage
@@ -27,46 +27,56 @@ const LoginPage = ({ setIsAuthenticated }) => {
       console.error('Login failed:', error);
     }
   };
-  
+
+
+
 
   return (
 
-<>
-<Navbar/>
-    <div className=" mt-12  flex justify-center bg-white-200">
-      <form onSubmit={handleLogin} className="w-96 p-6 bg-white rounded shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="test@gmail.com"
-          className="w-full mb-3 p-2 border rounded"
-          required
+    <>
+      <Navbar />
+      <div className=" mt-12  flex justify-center bg-white-200">
+        <form onSubmit={handleLogin} className="w-96 p-6 bg-white rounded shadow-md">
+          <h2 className="text-2xl font-bold mb-4">Login</h2>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="test@gmail.com"
+            className="w-full mb-3 p-2 border rounded"
+            required
           />
-        <input
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="12345678"
-          className="w-full mb-3 p-2 border rounded"
-          required
+          <input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="12345678"
+            className="w-full mb-3 p-2 border rounded"
+            required
           />
-        <button
-          type="submit"
-          className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600 "
+    
+          
+          <button
+            type="submit"
+            className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600 "
           >
-          Log In
-        </button>
-        <div>
+            Log In
+          </button>
+     
 
-Don't have account?
-<a href="/signup" className='text-blue-600 hover:text-blue-500'> signup</a>
-</div>
-      </form>
-      
-    </div>
-          </>
+          <div>
+
+            Don't have account?
+            <a href="/signup" className='text-blue-600 hover:text-blue-500'> signup</a>
+          </div>
+          <div>
+            Login using OTP?
+            <a href="/otplogin" className='text-blue-600 hover:text-blue-500'> otplogin</a>
+          </div>
+        </form>
+
+      </div>
+    </>
   );
 };
 
