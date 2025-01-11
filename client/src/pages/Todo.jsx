@@ -13,9 +13,9 @@ const ItemList = () => {
   };
 
   return (
-    <div className="p-4 max-w-sm mx-auto border rounded-lg shadow-md">
-      <div className='bg-cyan-400 w-full h-12 rounded-lg flex items-center justify-center'>
-        <h1 className="text-2xl text-black font-bold">Item List Manager</h1>
+    <div className="p-4 max-w-md mx-auto border rounded-lg shadow-md mt-12">
+      <div className='bg-blue-400 w-full h-12  flex items-center justify-center'>
+        <h1 className="text-2xl text-white font-bold">Item List Manager</h1>
       </div>
 
       {/* Input Field */}
@@ -25,13 +25,13 @@ const ItemList = () => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Enter an item"
-          className="w-full px-3 py-2 mb-4 border rounded focus:outline-none focus:border-cyan-400"
+          className="w-full px-3 py-2 mb-4 border rounded focus:outline-none focus:border-blue-400"
         />
 
         {/* Add Item Button */}
         <button
           onClick={handleAddItem}
-          className="w-full bg-cyan-500 text-white py-2 px-4 rounded hover:border-cyan-400"
+          className="w-full bg-blue-500 text-white py-2 px-4 focus:outline-none rounded hover:border-blue-400"
         >
           Add Item
         </button>
