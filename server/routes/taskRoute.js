@@ -1,6 +1,7 @@
-const express = require("express");
-const { createTask, updateTask, deleteTask, getAllTasks, getDashboardStats } = require("../controller/taskController");
-const { isAuthenticatedUser } = require("../middleware/auth"); // Ensure user is authenticated
+import  { createTask, updateTask, deleteTask, getAllTasks, getDashboardStats } from "../controller/taskController.js";
+import  { isAuthenticatedUser } from "../middleware/auth.js"; // Ensure user is authenticated
+
+import express from "express";
 
 const router = express.Router();
 
@@ -9,4 +10,4 @@ router.route("/tasks").post(isAuthenticatedUser, createTask).get(isAuthenticated
 router.route("/tasks/:id").put(isAuthenticatedUser, updateTask).delete(isAuthenticatedUser, deleteTask);
 router.route("/tasks/stats").get(isAuthenticatedUser, getDashboardStats);
 
-module.exports = router;
+export default router;

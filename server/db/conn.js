@@ -1,9 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import cors from "cors"
 
-const cors = require('cors');
-
-
-const connectDatabase = async ()=>{
+export const connectDatabase = async ()=>{
 
     await mongoose.connect(process.env.DB_URL)
     .then((data)=>{
@@ -14,4 +12,4 @@ const connectDatabase = async ()=>{
     })
 }
 
-module.exports = connectDatabase
+export default connectDatabase;

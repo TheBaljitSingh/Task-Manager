@@ -31,6 +31,8 @@ const Navbar = () => {
         <div className="text-white font-semibold text-xl flex space-x-6">
           <span ><a href="/">Home</a></span>
           <span>TaskMap</span>
+          <span ><a href="/lobby">Lobby</a></span>
+
         </div>
 
         {/* Right Side - Login/Logout Button */}

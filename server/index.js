@@ -1,10 +1,8 @@
-const app = require("./app");
-const dotenv = require("dotenv");
+import server from "./app.js"
 
 //config
-dotenv.config();
 
-const connectDatabase = require("./db/conn.js");
+import  connectDatabase from "./db/conn.js";
 
 
 connectDatabase();
@@ -15,17 +13,15 @@ connectDatabase();
 process.env.PORT;
 
 
-
-
-
-
-
-
-const server = app.listen(process.env.PORT, (err)=>{
+server.listen(process.env.PORT, (err)=>{
     if(err) console.log("error hai => "+ err)
     console.log(`Server is working on http://localhost:${process.env.PORT}`)
 
 })
+
+
+
+
 
   
 process.on("unhandledRejection",(err)=>{

@@ -1,8 +1,8 @@
-const User = require("../models/userModel");
-const sendToken = require("../utils/jwtToken");
+import User from "../models/userModel.js"
+import sendToken from "../utils/jwtToken.js"
 
 
-exports.registerUser = async(req, res, next) =>{
+export const registerUser = async(req, res, next) =>{
 
    try {
      const {name, email, password} = req.body;
@@ -29,7 +29,7 @@ exports.registerUser = async(req, res, next) =>{
    }
 }
 
-exports.loginUser = async(req,res,next)=>{
+export const loginUser = async(req,res,next)=>{
     const {email, password} = req.body;
 
     console.log(email+password);
@@ -56,7 +56,7 @@ exports.loginUser = async(req,res,next)=>{
 
 //Logout User
 
-exports.logoutUser = async(req, res, next)=>{
+export const logoutUser = async(req, res, next)=>{
     
     // console.log(res);
     res.cookie("token", null,{

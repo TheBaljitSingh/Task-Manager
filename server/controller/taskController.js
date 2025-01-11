@@ -1,7 +1,7 @@
-const Task = require("../models/taskModel");
-const sendToken = require("../utils/jwtToken");
+import Task from "../models/taskModel.js"
+import sentToken from "../utils/jwtToken.js"
 
-exports.createTask = async (req, res) => {
+export const createTask = async (req, res) => {
     try {
       const { title, startTime,endTime, priority, status } = req.body;
 
@@ -27,7 +27,7 @@ exports.createTask = async (req, res) => {
     }
   };
   
-  exports.updateTask = async (req, res) => {
+  export const updateTask = async (req, res) => {
     try {
       const { id } = req.params;
       const updates = req.body;
@@ -50,7 +50,7 @@ exports.createTask = async (req, res) => {
   };
 
 
-  exports.deleteTask = async (req, res) => {
+  export const deleteTask = async (req, res) => {
     try {
       const { id } = req.params;
   
@@ -66,7 +66,7 @@ exports.createTask = async (req, res) => {
     }
   };
 
-  exports.getAllTasks = async (req, res) => {
+  export const getAllTasks = async (req, res) => {
     try {
       const { priority, status, sortBy } = req.query;
       const filter = { userId: req.user.id }; // Ensure user gets only their tasks
@@ -86,7 +86,7 @@ exports.createTask = async (req, res) => {
     }
   };
 
-  exports.getDashboardStats = async (req, res) => {
+  export const getDashboardStats = async (req, res) => {
     try {
       const userId = req.user.id;
   

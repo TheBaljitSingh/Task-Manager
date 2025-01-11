@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 
 //Creating Token and saving in cookie
@@ -27,4 +27,4 @@ const jwt = require("jsonwebtoken");
 
 }; 
 
-module.exports = sendToken;
+export default sendToken;
